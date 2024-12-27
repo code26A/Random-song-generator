@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
-
+import ReactPlayer from "react-player";
+import "./App.css";
+import Button from "@mui/material/Button";
+import { useState } from "react";
 function App() {
+  const [link,setLink]=useState("");
+  function handleClick() {
+    
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="grid">
+        <div>asd</div>
+        <div>
+          <div className="playback">
+            <div className="player-wrapper">
+              <ReactPlayer
+                className="react-player"
+                url={link}
+                width="100%"
+                height="100%"
+              />
+            </div>
+              <div>
+                <Button onClick={handleClick} variant="contained">Contained</Button>
+              </div>
+          </div>
+        </div>
+        <div>gfdsg</div>
+      </div>
     </div>
   );
 }
