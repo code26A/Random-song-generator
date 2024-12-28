@@ -10,9 +10,8 @@ function App() {
   const [newSong, setNewSong] = useState("");
 
   async function handleClick() {
-    const genAI = new GoogleGenerativeAI(
-      "AIzaSyAW5BtYiQ9aoXXq2FiP83nNI5-7J2DLnQs"
-    );
+    const apiKey = process.env.REACT_APP_GEMINI_API_KEY;
+    const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     let newGeneratedSong = "";
@@ -20,7 +19,7 @@ function App() {
 
     // Create the prompt with the song list
     let songListText = songNames.length > 0 ? songNames.join(", ") : "No previous songs";
-    const prompt = `Generate a unique random song name that is not in the following list: ${songListText}.`;
+    const prompt = `Generate a unique random music video name and that is not in the following list: ${songListText}.`;
 
     while (!isUnique) {
       const result = await model.generateContent(prompt);
