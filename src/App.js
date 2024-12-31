@@ -14,7 +14,7 @@ function App() {
       console.log("Fetching video for song:", song); // Log the current song
       const result = await axios.get(
         `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${song}&type=video&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`
-      );
+      );  //api call to youtube
       const videoId = result?.data?.items?.[0]?.id?.videoId;
       if (videoId) {
         setVideo_id(videoId);
